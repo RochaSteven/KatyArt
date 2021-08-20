@@ -1,0 +1,121 @@
+<div>
+
+    <div class="d-flex justify-content-between">
+      <h4>Form </h4>
+      <a href="#" routerLink="/articule/index" class="btn btn-primaryt">Back</a>
+    </div>
+  
+    <hr/>
+  
+      <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group row">
+          <div class="col-md-6 ">
+            <label for="title">Code:</label>
+            <input
+              formControlName="code"
+              id="code"
+              type="text"
+              class="form-control">
+            <div *ngIf="f.code.touched && f.code.invalid" class="alert alert-danger">
+                <div *ngIf="f.code.errors.required">*Code is required.</div>
+                <div *ngIf="f.code.errors.pattern">*The code must only contain letters.</div>
+            </div>
+          </div>
+      </div>
+
+          <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="title">Name:</label>
+                <input
+                  formControlName="name"
+                  id="name"
+                  type="text"
+                  class="form-control">
+                <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">*Name is required.</div>
+                    <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
+                </div>
+              </div>
+          </div>
+  
+          <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="salePrice">Sale Price:</label>
+              <input
+                formControlName="salePrice"
+                id="salePrice"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.salePrice.touched && f.salePrice.invalid" class="alert alert-danger">
+                  <div *ngIf="f.salePrice.errors.required">*Sale Price is required.</div>
+                  <div *ngIf="f.salePrice.errors.pattern">*The Sale Price must be a valid.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="codePostal">Code Postal:</label>
+              <input
+                formControlName="codePostal"
+                id="codePostal"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.codePostal.touched && f.codePostal.invalid" class="alert alert-danger">
+                  <div *ngIf="f.codePostal.errors.required">*Code Postal is required.</div>
+                  <div *ngIf="f.codePostal.errors.pattern">*The code postal must contain 6 numbers.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="stock">Stock:</label>
+              <input
+              name="quantity" min="1" max="50"
+                formControlName="stock"
+                id="stock"
+                type="number"
+                class="form-control">
+              <div *ngIf="f.stock.touched && f.stock.invalid" class="alert alert-danger">
+                  <div *ngIf="f.stock.errors.required">*Stock is required.</div>
+                  <div *ngIf="f.stock.errors.pattern">*The stock should only contain up to 50 products per day.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="description">Description:</label>
+              <input
+                formControlName="description"
+                id="description"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
+                  <div *ngIf="f.description.errors.required">*Description is required.</div>
+                  <div *ngIf="f.description.errors.pattern">*The description must only contain numbers.</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="img">Image:</label>
+              <div>
+                <button type="button" (click)="subirArchivo()">Subir Archivo</button> 
+              </div>
+              <div>
+                <input (change)="captureFile($event)" type="file">
+              </div>
+             <div *ngIf="previsualizacion">
+               <img [src]="previsualizacion" alt="">
+             </div>
+           </div>
+        </div>
+  
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </form>
+  </div>
+  

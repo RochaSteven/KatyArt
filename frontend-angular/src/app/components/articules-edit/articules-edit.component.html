@@ -1,0 +1,39 @@
+<br>
+<h1 class="text-center" style="margin-top: 50px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:xx-large;">Productos</h1>
+<form (ngSubmit)="updateArticule()" class="container">
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="code">code</label>
+      <input type="text" name="code" class="form-control" [(ngModel)]="articule.code">
+    </div>
+  <div class="form-group" style="margin-right: 50%;">
+    <label for="name">name</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="articule.name">
+  </div>
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="price">salePreci</label>
+      <input type="text" name="price" class="form-control" [(ngModel)]="articule.salePrice">
+    </div>
+    <div class="form-group" style="margin-right: 50%;">
+        <label for="codep">Code postal</label>
+        <input type="text" name="codep" class="form-control" [(ngModel)]="articule.codePostal">
+      </div>
+      <div class="form-group" style="margin-right: 50%;">
+        <label for="stock">stock</label>
+        <input type="text" name="stock" class="form-control" [(ngModel)]="articule.stock">
+      </div>
+      <div class="form-group" style="margin-right: 50%;">
+        <label for="desc">description</label>
+        <input type="text" name="desc" class="form-control" [(ngModel)]="articule.description">
+      </div>
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="img">Imagen del producto</label>
+      <input type="file" (change)="capturarFile($event)" name="img" class="form-control" [(ngModel)]="articule.img">
+      <img src='http://127.0.0.1:8000/storage/{{articule.img}}' alt="">
+    </div>
+    <div *ngIf = "previsualizacion">
+      <img [src] = "previsualizacion" alt = "">
+    </div>
+    
+    <button class="btn btn-dark mt-4 mr-2 ">Actualizar</button>
+    <button class="btn btn-danger mt-4 ml-2" routerLink="/article">Regresar</button>
+</form>

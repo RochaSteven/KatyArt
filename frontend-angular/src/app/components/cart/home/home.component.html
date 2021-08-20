@@ -1,0 +1,33 @@
+<section>
+
+    <div class="d-flex justify-content-between">
+      <h4>Shopping Cart</h4>
+    </div>
+
+    <br>
+    
+    <table class="table ">
+      <tr>
+        <th>Nº</th>
+        <th>Img</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Sale Price</th>
+        <th>Amount</th>
+        <th>Total</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let cart of carts; let i = home">
+        <td>{{ i + 1 }}</td>
+        <td>{{ cart.code }}</td>
+        <td>{{ cart.name }}</td>
+        <td>{{ cart.salePrice }}</td>
+        <td>{{ cart.codePostal}}</td>
+        <td>{{ cart.stock }}</td>
+        <td>{{ cart.description}}</td>
+        <td>
+          <button type="button" (click)="deleteCart(cart.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+ </section>

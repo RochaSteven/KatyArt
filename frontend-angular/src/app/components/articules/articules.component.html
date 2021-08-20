@@ -1,0 +1,70 @@
+
+<br>
+<h1 class="text-center" style="margin-top: 50px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:xx-large;">Productos</h1>
+<form (ngSubmit)="addData()" class="container">
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" class="form-control" [(ngModel)]="articule.code">
+    </div>
+  <div class="form-group" style="margin-right: 50%;">
+    <label for="name">name</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="articule.name">
+  </div>
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="name">salePreci</label>
+      <input type="text" name="name" class="form-control" [(ngModel)]="articule.salePrice">
+    </div>
+    <div class="form-group" style="margin-right: 50%;">
+        <label for="name">Code postal</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="articule.codePostal">
+      </div>
+      <div class="form-group" style="margin-right: 50%;">
+        <label for="name">stock</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="articule.stock">
+      </div>
+      <div class="form-group" style="margin-right: 50%;">
+        <label for="name">description</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="articule.description">
+      </div>
+  <div class="form-group" style="margin-right: 50%;">
+      <label for="name">Imagen del producto</label>
+      <input type="file" (change)="capturarFile($event)" name="file" class="form-control" [(ngModel)]="articule.img">
+    </div>
+    <div *ngIf = "previsualizacion">
+      <img [src] = "previsualizacion" alt = "">
+    </div>
+    
+  <button class="btn btn-dark mt-4 mb-4">Registrar</button>
+</form>
+<div class="container">
+  <div *ngFor="let articule of articules;let i=index">
+    
+      <table class="table">
+        <thead>
+          <tr>
+           <th scope="col">N°</th>
+            <th scope="col">code</th>
+            <th scope="col">name</th>
+            <th scope="col">Preci</th>
+            <th scope="col">Postal</th>
+            <th scope="col">stock</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">image</th>
+          </tr>
+        </thead>
+        <tbody>
+           <td scope="row">{{i+1}}</td>
+            <td scope="row">{{articule.code}}</td>
+            <td scope="row">{{articule.name}}</td>
+            <td scope="row">{{articule.salePrice}}</td>
+            <td scope="row">{{articule.codePostal}}</td>
+            <td scope="row">{{articule.stock}}</td>
+            <td scope="row">{{articule.description}}</td>
+            <td><img src='http://127.0.0.1:8000/storage/{{articule.img}}' alt=""></td>
+            <td><button class="btn btn-danger mr-2" (click)="deleteData(articule.id)">Eliminar</button>
+              <button class="btn btn-primary ml-2" routerLink="edit/{{articule.id}}">Editar</button></td> 
+          </tbody>
+        </table>
+        </div>
+      
+ </div>
